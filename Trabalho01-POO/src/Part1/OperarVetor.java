@@ -62,7 +62,7 @@ public class OperarVetor {
 
     public static class Vetor {
 
-        public int vet[] = new int[5];
+        public Integer vet[] = new Integer[5];
         public int ind;
 
         public Vetor() {
@@ -92,13 +92,13 @@ public class OperarVetor {
 
         public void remover(int i) {
             if (i >= ind && i < vet.length) {
-                vet[i] = 0;
+                vet[i] = null;
                 ind++;
                 while (i > ind) {
                     //this.imprimir();
                     System.out.println("");
                     vet[i] = vet[i - 1];
-                    vet[i - 1] = 0;
+                    vet[i - 1] = null;
                     i--;
                 }
                 //this.imprimir();
