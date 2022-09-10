@@ -21,53 +21,67 @@ public class OperarArraylist {
         Scanner tcld = new Scanner(System.in);
         int op = 1;
         ArrayList<Integer> objArray = new ArrayList<>();
-        int ind = 4;
-        for(int cont=0; cont<=ind; cont++){
-            objArray.add(null);
-        }
+        int tamArray = 4;
+        int ind = -1;
 
-        while (op != 0) {
+        while (op != 0)
+        {
             System.out.println("\n\n\t\t\t______MENU______\n");
-            System.out.println("0. Para sair");
             System.out.println("Digite a opção desejada:");
+            System.out.println("0. Para sair");
+            
             System.out.println("1. Insirir");
             System.out.println("2. Remover");
             System.out.println("3. Imprimir vetor");
             op = Integer.parseInt(tcld.nextLine());
 
-            switch (op) {
+            switch (op)
+            {
                 case 1:
-                    if (ind > 0) {
+                    if (ind < tamArray)
+                    {
                         System.out.println("Digite um número para inserir no vetor: ");
                         Integer num = Integer.parseInt(tcld.nextLine());
-                        objArray.set(ind, num);
-                        ind--;
-                    } else {
+                        objArray.add(num);
+                        ind++;
+                    } else
+                    {
                         System.out.println("\n\t\t\tERRO! \n\t\tO ArrayList esta cheio");
                     }
                     break;
 
                 case 2:
                     System.out.println("Digite o índice para remoção: ");
-                    Integer indice = Integer.parseInt(tcld.nextLine());
-                    objArray.remove(indice);
-                    objArray.add(0, null);
+                    int indice = Integer.parseInt(tcld.nextLine());
+                    if (indice <= ind && indice >= 0)
+                    {
+                        objArray.remove(indice);
+                        System.out.println("removido");
+                        ind--;
+                    } else
+                    {
+                        System.out.println("\n\t\t\tERRO! \n\t\tÍndice não existente");
+                    }
                     break;
 
                 case 3:
-                    System.out.println("Elementos: ");
-                    for(int cont = 0; cont<5; cont++){
+                    System.out.println("\nElementos: ");
+                    if(objArray.isEmpty()){
+                        System.out.println("\n\tArray vazio!");
+                    }
+                    for (int cont = 0; cont < objArray.size(); cont++)
+                    {
                         System.out.print(objArray.get(cont) + " | ");
                     }
                     break;
 
                 case 0:
-                    System.out.println("Encerrando... :(");
+                    System.out.println("\nEncerrando... :(");
 
                     break;
 
                 default:
-                    System.out.println("Opção invalida! Digite apenas uma das opções.");
+                    System.out.println("\nOpção invalida! Digite apenas uma das opções.");
 
             }
         }
